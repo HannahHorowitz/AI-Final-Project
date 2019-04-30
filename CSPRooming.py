@@ -1,6 +1,6 @@
 from CSP import *
 
-#hello
+
 def readFromFile(filename):
     board = ""
     file = open(filename, "r")
