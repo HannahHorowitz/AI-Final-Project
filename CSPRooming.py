@@ -24,7 +24,7 @@ def main():
         # messy
         # conflict
         variables.append(name)
-        domains[name] =
+        domains[name] = 
 
     # set up the variables and domains in the Australia example so it can be solved with AC3
     variables = ["Northern Territory", "Queensland", "New South Wales", "Victoria"]
