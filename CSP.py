@@ -124,7 +124,7 @@ class CSP:
         # returns an assignment mapping
 
         #TODO: Implement backtrack function here
-        if len(assignment) == len(self.variables):
+        if len(assignment) == len(self.variables):#possibly change this to four
             return assignment
 
         variable = self.chooseVariable(assignment)
