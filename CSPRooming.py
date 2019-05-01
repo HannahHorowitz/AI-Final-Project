@@ -40,7 +40,7 @@ def main():
 
     # set up the variables and domains in the Australia example so it can be solved with AC3
     for v in variables:
-        domains[v] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        domains[v] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     # variables.append("South Australia")
     # domains["South Australia"] = ["red"]
