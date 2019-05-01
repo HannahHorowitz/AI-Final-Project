@@ -1,6 +1,6 @@
 from CSP import *
 
-
+#why is everything so weird 
 def readFromFile(filename):
     board = ""
     file = open(filename, "r")
