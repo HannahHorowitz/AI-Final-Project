@@ -1,4 +1,4 @@
-JosieBauer	HannahHorowitz	Morning	Neat	None
-HannahHorowitz	JosieBauer	Night	Neat	None
-GabbyGriff	AspenWalters	Morning	Neat	None
-ApsenWalters	GabbyGriff	Night	Messy	None
+JosieBauer	Morning	Neat	None
+HannahHorowitz	Night	Neat	None
+GabbyGriff	Morning	Neat	None
+ApsenWalters	Night	Messy	None

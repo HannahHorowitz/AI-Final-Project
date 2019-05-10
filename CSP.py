@@ -12,6 +12,20 @@ class CSP:
         self.variables = variables
         self.domains = domains
         self.constraints = {}
+        self.one = 0
+        self.two = 0
+        self.three = 0
+        self.four = 0
+        self.five = 0
+        self.six = 0
+        self.seven = 0
+        self.eight = 0
+        self.nine = 0
+        self.ten = 0
+        self.eleven = 0
+        self.twelve = 0
+        self.thirt = 0
+        self.fourt = 0
         for v in variables:
             self.constraints[v] = []
 
@@ -27,6 +41,7 @@ class CSP:
         # Arc-Consistancy 3
         # limits the domains of variables in the CSP that can't be satisfied
         arcs = []
+
         for variable1 in self.variables:
             for variable2 in self.constraints[variable1]:
                 arcs.append((variable1, variable2))
@@ -105,6 +120,48 @@ class CSP:
         # returns False if assigning the val to the variable would conflict
         # with a constraint as another variable in the assignment is already assigned the val
         # otherwise, return True
+        if val == 1:
+            if self.one == 4:
+                return False
+        if val == 2:
+            if self.two == 4:
+                return False
+        if val == 3:
+            if self.three == 4:
+                return False
+        if val == 4:
+            if self.four == 4:
+                return False
+        if val == 5:
+            if self.five == 4:
+                return False
+        if val == 6:
+            if self.six == 4:
+                return False
+        if val == 7:
+            if self.seven == 4:
+                return False
+        if val == 8:
+            if self.eight == 4:
+                return False
+        if val == 9:
+            if self.nine == 4:
+                return False
+        if val == 10:
+            if self.ten == 4:
+                return False
+        if val == 11:
+            if self.eleven == 4:
+                return False
+        if val == 12:
+            if self.twelve == 4:
+                return False
+        if val == 13:
+            if self.thirt == 4:
+                return False
+        if val == 14:
+            if self.fourt == 4:
+                return False
         for variable2 in self.constraints[variable]:
             if variable2 in assignment and assignment[variable2] == val:
                 return False
@@ -124,7 +181,7 @@ class CSP:
         # returns an assignment mapping
 
         #TODO: Implement backtrack function here
-        if len(assignment) == len(self.variables):#possibly change this to four
+        if len(assignment) == len(self.variables):
             return assignment
 
         variable = self.chooseVariable(assignment)
@@ -132,17 +189,45 @@ class CSP:
             if self.consistent(variable, val, assignment):
                 new_assignment = copy.deepcopy(assignment)
                 new_assignment[variable] = val
-                new_board = copy.deepcopy(self)
-                new_board.domains[variable] = [val]
+                # new_board = copy.deepcopy(self)
+                self.domains[variable] = [val]
+                if val == 1:
+                    self.one +=1
+                if val == 2:
+                    self.two +=1
+                if val == 3:
+                    self.three +=1
+                if val == 4:
+                    self.four +=1
+                if val == 5:
+                    self.five +=1
+                if val == 6:
+                    self.six +=1
+                if val == 7:
+                    self.seven +=1
+                if val== 8:
+                    self.eight +=1
+                if val== 9:
+                    self.nine +=1
+                if val== 10:
+                    self.ten +=1
+                if val== 11:
+                    self.eleven +=1
+                if val== 12:
+                    self.twelve +=1
+                if val== 13:
+                    self.thirt +=1
+                if val== 14:
+                    self.fourt +=1
+                #print(self.one)
+                self.ac3()
 
-                new_board.ac3()
+                for v in self.variables:
+                    if len(self.domains[v])== 1:
+                        new_assignment[v] = self.domains[v][0]
 
-                for v in new_board.variables:
-                    if len(new_board.domains[v])== 1:
-                        new_assignment[v] = new_board.domains[v][0]
-
-                if not new_board.impossible():
-                    result = new_board.backtrack(new_assignment)
+                if not self.impossible():
+                    result = self.backtrack(new_assignment)
                     if result is not None:
                         return result
 
@@ -156,7 +241,7 @@ class CSP:
         return None
 
 
-    def print(self):
+    def print(self, ):
         # print out each variable and its domain values
         result = ""
         for variable in self.variables:

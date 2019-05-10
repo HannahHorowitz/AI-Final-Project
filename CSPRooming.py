@@ -12,72 +12,40 @@ def readFromFile(filename):
 
 def main():
 
-    data = open("test.txt", "r")
+    data = open("preferences.txt", "r")
     lines = data.readlines()
-    name = []
-    pref = []
-    morning = []
-    messy = []
+    # name = []
+    # pref = []
+    # morning = []
+    # messy = []
 
-    index = 0
-    for x in lines:
-        row = x.split()
-        names = row[0]
-        preferences = row[1]
-        timeOfDay = row[2]
-        cleanliness = row[3]
-        name.append(names)
-        pref.append(preferences)
-        morning.append(timeOfDay)
-        messy.append(cleanliness)
-        #print(name[index])
-        index += 1
+    # index = 0
+    # for x in lines:
+    #     row = x.split()
+    #     names = row[0]
+    #     preferences = row[1]
+    #     timeOfDay = row[2]
+    #     cleanliness = row[3]
+    #     name.append(names)
+    #     pref.append(preferences)
+    #     morning.append(timeOfDay)
+    #     messy.append(cleanliness)
+    #     #print(name[index])
+    #     index += 1
 
-    for a in morning:
-        if a == "Morning":
-            m = a.index("Morning")
-            for b in name:
-                if b == name[m]:
-                    print(name[m])
-        else:
-            n = a.index("Night")
-            for c in name:
-                if c == name[n]:
-                    print(name[n])
-
-    for d in messy:
-        if d == "Messy":
-            m2 = d.index("Messy")
-            for e in name:
-                if e == name[m2]:
-                    print(name[m2])
-        else:
-            n2 = d.index("Neat")
-            for f in name:
-                if f == name[n2]:
-                    print(name[n2])
-
-    print(name)
-    print(pref)
-    print(morning)
-    print(messy)
-
-
-
-    variables =[] #list of all variables, in this case the names entered
+    variables = []
+    domain = []
     domains ={}
     mornings = []
     nights = []
     messys = []
     neats = []
-    for line in lines: #foor loop to separate elements of the string in lines
-        #figure out how to separate the inputs based on comma and tab - separate into strings
-        #variables to save values into
-        # name
-        # roommate
-        # morning
-        # messy
-        # conflict
+    for line in lines:
+        row = line.split()
+        name = row[0]
+        morning = row[1]
+        messy = row[2]
+        conflict = row[3]
         if morning == "Morning":
             mornings.append(name)
         elif morning == "Night":
@@ -91,10 +59,10 @@ def main():
 
     # set up the variables and domains in the Australia example so it can be solved with AC3
     for v in variables:
-        domains[v] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        domains[v] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
     # variables.append("South Australia")
-    # domains["South Australia"] = ["red"]
+    domains["JosieBauer"] = [1]
     # variables.append("Western Australia")
     # domains["Western Australia"] = ["blue"]
     # variables.append("Tasmania")
@@ -111,7 +79,7 @@ def main():
             myCSP.addConstraint(n, p)
 
 
-    myCSP.ac3()
+    myCSP.search()
     myCSP.print()
 
 main()
