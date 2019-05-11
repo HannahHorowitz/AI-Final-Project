@@ -78,6 +78,14 @@ def main():
         for p in neats:
             myCSP.addConstraint(n, p)
 
+    for line in lines:
+        row = line.split()
+        name = row[0]
+        conflict = row[3]
+        if conflict != "None":
+            myCSP.addConstraint(name, conflict)
+
+
 
     myCSP.search()
     myCSP.print()

@@ -12,7 +12,7 @@ class CSP:
         self.variables = variables
         self.domains = domains
         self.constraints = {}
-        self.one = 0
+        self.one = 1
         self.two = 0
         self.three = 0
         self.four = 0
@@ -219,7 +219,6 @@ class CSP:
                     self.thirt +=1
                 if val== 14:
                     self.fourt +=1
-                #print(self.one)
                 self.ac3()
 
                 for v in self.variables:
@@ -230,7 +229,6 @@ class CSP:
                     result = self.backtrack(new_assignment)
                     if result is not None:
                         return result
-
         return None
 
     def chooseVariable(self, assignment):
@@ -243,7 +241,25 @@ class CSP:
 
     def print(self, ):
         # print out each variable and its domain values
+        i = 0
         result = ""
-        for variable in self.variables:
-            result += str(variable) + " : " + str(self.domains[variable]) + "\n"
+        # for variable in self.variables:
+        #     result += str(variable) + " : " + str(self.domains[variable]) + "\n"
+        #     i+=1
+
+        for var in range(1, 15):
+            for variable in self.variables:
+                # if len(self.domains[variable]):
+
+                vari = str(self.domains[variable])
+                vary = "[" + str(var) + "]"
+                if vari == vary:
+                    result += str(variable) + " : " + str(self.domains[variable]) + "\n"
+                    i+=1
+        for v in self.variables:
+            veep = str(self.domains[v])
+            if veep == "[]":
+                result += str(v) + " : " + str(self.domains[v]) + "\n"
+                i += 1
+
         print(result)
